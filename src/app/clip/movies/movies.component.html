@@ -1,0 +1,25 @@
+<ul class="nav nav-pills" #detailSugestionMovie>
+  <li class="nav-item" >
+    <a class="nav-link " data-nametab="detailsMovie" role="button" [ngClass]="{'active': showTabDetailsMovie}" #detailsMovie (click)="behaviour(detailsMovie)"  aria-current="page">Details</a>
+  </li>
+  <li class="nav-item" >
+    <a class="nav-link " data-nametab="sugestionMovie" role="button" [ngClass]="{'active': showTabSugestionMovie}" #sugestionMovie (click)="behaviour(sugestionMovie)" aria-current="page">Sugestions</a>
+  </li>
+</ul>
+
+<div class="row" *ngIf="showTabDetailsMovie">
+  <div class="col-md-12">
+    <div class="jumbotron">
+
+      <omdb-movie-details></omdb-movie-details>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="showTabSugestionMovie">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <omdb-movie-list-sugestions></omdb-movie-list-sugestions>
+    </div>
+  </div>
+</div>

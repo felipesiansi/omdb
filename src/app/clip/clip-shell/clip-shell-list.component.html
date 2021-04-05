@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <omdb-criteria
+      class="col-lg-12"
+      #filterCriteria
+      (valueChange)="onValueChanges($event)"
+    >
+    </omdb-criteria>
+  </div>
+
+  <div class="panel-body">
+    <div class="list-group">
+      <button
+        type="button"
+        class="list-group-item"
+        *ngFor="let clip of filteredClips"
+        [ngClass]="{ active: clip?.imdbID === selectedClip?.imdbID }"
+        (click)="onSelected(clip)"
+      >
+        {{ clip.Title }}
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>

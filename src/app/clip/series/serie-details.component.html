@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+   <b> {{selectedSerie?.Title}}</b>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <omdb-star  [rating]='selectedSerie?.imdbRating'>
+    </omdb-star>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p>
+      {{selectedSerie?.Plot}}
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-group list-group-flush">
+      <li   class="list-group-item disabled" aria-disabled="true">
+        Total Seasons:
+      </li>
+      <li class="list-group-item">
+        {{selectedSerie?.totalSeasons}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Released:
+      </li>
+      <li class="list-group-item" >
+        {{selectedSerie?.Released | date: 'dd/MM/yyyy'}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Genre:
+
+      </li>
+      <li class="list-group-item">
+        {{selectedSerie?.Genre}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Language:
+      </li>
+      <li class="list-group-item">
+        {{selectedSerie?.Language}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item disabled" aria-disabled="true">
+        Director:
+      </li>
+      <li class="list-group-item">
+        {{selectedSerie?.Director}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Actors:
+      </li>
+      <li class="list-group-item">
+        {{selectedSerie?.Actors}}
+      </li>
+    </ul>
+
+  </div>
+</div>

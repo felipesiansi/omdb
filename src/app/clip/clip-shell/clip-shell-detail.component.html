@@ -1,0 +1,59 @@
+<div class="panel panel-primary" *ngIf="selectedClip">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-12 imgPoster">
+        <img
+          *ngIf="selectedClip.Poster != 'N/A'"
+          class="img-responsive"
+          [style.width.px]="imageWidth"
+          [style.margin.px]="imageMargin"
+          [src]="selectedClip.Poster"
+          [title]="selectedClip.Title"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-body"
+       [style.margin.px]="imageMargin"
+       *ngIf="selectedClip.Poster == 'N/A'">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-12">
+            <b>{{ selectedClip.Title }}</b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <b>{{ selectedClip.Type }}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="btn-group" >
+          <omdb-add-remove-my-list
+           #btnCustom
+           [clip]="selectedClip">
+          </omdb-add-remove-my-list>
+        </div>
+      </div>
+    </div>
+    <div class="row" [style.margin.px]="movieMargin">
+      <div class="col-md-12"  *ngIf="checkTypeClipMovie()">
+        <omdb-movies>
+        </omdb-movies>
+      </div>
+      <div class="col-md-12"  *ngIf="!checkTypeClipMovie()">
+        <omdb-series>
+        </omdb-series>
+      </div>
+
+    </div>
+
+  </div>
+</div>

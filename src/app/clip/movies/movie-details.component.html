@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+   <b> {{selectedMovie?.Title}}</b>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <omdb-star  [rating]='selectedMovie?.imdbRating'>
+    </omdb-star>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p>
+      {{selectedMovie?.Plot}}
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-group list-group-flush">
+      <li   class="list-group-item disabled" aria-disabled="true">
+        Runtime:
+      </li>
+      <li class="list-group-item">
+        {{selectedMovie?.Runtime}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Released:
+      </li>
+      <li class="list-group-item" >
+        {{selectedMovie?.Released | date: 'dd/MM/yyyy'}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Genre:
+
+      </li>
+      <li class="list-group-item">
+        {{selectedMovie?.Genre}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Language:
+      </li>
+      <li class="list-group-item">
+        {{selectedMovie?.Language}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item disabled" aria-disabled="true">
+        Director:
+      </li>
+      <li class="list-group-item">
+        {{selectedMovie?.Director}}
+      </li>
+      <li class="list-group-item disabled" aria-disabled="true">
+        Actors:
+      </li>
+      <li class="list-group-item">
+        {{selectedMovie?.Actors}}
+      </li>
+    </ul>
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<ul class="nav nav-pills" #detailSugestionSerie>
+  <li class="nav-item" >
+    <a class="nav-link " data-nametab="detailsSerie" role="button" [ngClass]="{'active': showTabDetailsSerie}" #detailsSerie (click)="behaviour(detailsSerie)"  aria-current="page">Details</a>
+  </li>
+  <li class="nav-item" >
+    <a class="nav-link " data-nametab="sugestionSerie" role="button" [ngClass]="{'active': showTabSugestionSerie}" #sugestionSerie (click)="behaviour(sugestionSerie)" aria-current="page">Sugestions</a>
+  </li>
+  <li class="nav-item" >
+    <a class="nav-link " data-nametab="episodesSerie" role="button" [ngClass]="{'active': showTabEpisodeSerie}" #episodesSerie (click)="behaviour(episodesSerie)" aria-current="page">Episodes</a>
+  </li>
+</ul>
+
+<div class="row" *ngIf="showTabDetailsSerie">
+  <div class="col-md-12">
+    <div class="jumbotron">
+
+      <omdb-serie-details></omdb-serie-details>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="showTabSugestionSerie">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <omdb-series-list-sugestion></omdb-series-list-sugestion>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="showTabEpisodeSerie">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <omdb-serie-list-episodes></omdb-serie-list-episodes>
+    </div>
+  </div>
+</div>

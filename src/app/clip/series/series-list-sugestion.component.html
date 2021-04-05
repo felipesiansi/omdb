@@ -1,0 +1,34 @@
+
+<div class='panel panel-primary' *ngIf='selectedMedias?.Search?.length'>
+  <div class='panel-heading'>
+  </div>
+
+  <div class='panel-body'>
+    <div class='list-group'>
+      <ul
+          class='list-group list-group-flush'
+          *ngFor='let media of selectedMedias.Search'>
+          <li class="list-group-item" >
+            <div class="row">
+              <div class="col-sm-4">
+                <img
+                  *ngIf="media.Poster != 'N/A'"
+                  class="img-responsive"
+                  [style.width.px]="imageWidth"
+                  [src]="media.Poster"
+                  [title]="media.Title"
+                />
+
+              </div>
+              <div class="col-sm-8">
+                {{ media.Title }}
+              </div>
+            </div>
+          </li>
+    </ul>
+    </div>
+  </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>

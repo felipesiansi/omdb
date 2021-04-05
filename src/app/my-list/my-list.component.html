@@ -1,0 +1,45 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{ pageTitle }}
+  </div>
+
+  <div class="panel-body">
+
+    <div class="table-responsive">
+      <table class="table" *ngIf="clips?.length">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary" (click)="toggleImage()">
+                {{ showImage ? "Hide" : "Show" }} Image
+              </button>
+            </th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let clip of clips">
+            <td>
+              <img
+                *ngIf="showImage && clip.Poster != 'N/A'"
+                [src]="clip.Poster"
+                [title]="clip.Title"
+                [style.width.px]="imageWidth"
+              />
+            </td>
+            <td>
+              {{ clip.Title }}
+            </td>
+            <td>{{ clip.Year }}</td>
+            <td>{{ clip.Type }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>
