@@ -1,8 +1,6 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
-import { ClipService } from 'src/app/shared/clip.service';
 import { IClip } from '../clip';
 import { MyListService } from '../my-list.service';
 
@@ -11,7 +9,7 @@ import { MyListService } from '../my-list.service';
   templateUrl: './add-remove-my-list.component.html',
   styleUrls: ['./add-remove-my-list.component.scss'],
 })
-export class AddRemoveMyListComponent implements OnInit , OnDestroy, OnChanges {
+export class AddRemoveMyListComponent implements OnInit, OnChanges {
   errorMessage: string = '';
   faBtn = faPlus;
   descriptionBtn : string = ' Add My List';
@@ -22,8 +20,7 @@ export class AddRemoveMyListComponent implements OnInit , OnDestroy, OnChanges {
   @Input()
   clip!: IClip;
 
-  constructor(private myListService: MyListService,
-              private clipService: ClipService) {}
+  constructor(private myListService: MyListService) {}
 
   ngOnInit(): void {
 
@@ -44,17 +41,19 @@ export class AddRemoveMyListComponent implements OnInit , OnDestroy, OnChanges {
 
   addClip() {
     if (this.clip) {
-      this.checkInMyList(this.clip);
+
 
       if (this.myListService.checkClipInList(this.clip)) {
         this.removeClipMyList();
       }else
       {
-        this.myListService.add(this.clip).subscribe((clip) => {
-          () => {
-            alert("Added successfully");
-          }
-        });
+        this.myListService.add(this.clip).subscribe(
+          () =>{
+           alert("Add item success");
+           this.checkInMyList(this.clip);
+           },
+          (error: any) => (this.errorMessage = <any>error)
+        );
       }
 
 
@@ -67,7 +66,8 @@ export class AddRemoveMyListComponent implements OnInit , OnDestroy, OnChanges {
     ) {
       this.myListService.clear(this.clip).subscribe(
         () =>{
-         alert("Item Remove");
+         alert("Remove item success");
+         this.checkInMyList(this.clip);
          },
         (error: any) => (this.errorMessage = <any>error)
       );
@@ -84,6 +84,6 @@ export class AddRemoveMyListComponent implements OnInit , OnDestroy, OnChanges {
 
 
   ngOnDestroy(): void {
-    //this.sub?.unsubscribe();
+
   }
 }
